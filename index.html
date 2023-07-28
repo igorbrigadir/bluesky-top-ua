@@ -20,7 +20,7 @@
                 let url = "https://bsky.app/profile/" + row.label;
                 let link = document.createElement('a');
                 link.href = url;
-                link.innerText = url;
+                link.innerText = row.label;
                 let rowElement = document.createElement('p');
                 rowElement.innerText = "№ " + rowNum + ": ";
                 rowElement.appendChild(link);
