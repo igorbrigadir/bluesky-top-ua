@@ -1,10 +1,12 @@
-# Simple workflow for deploying static content to GitHub Pages
 name: Deploy static content to Pages
 
 on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
+    paths:
+      - 'index.html'
+      - 'top100.csv'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -33,11 +35,14 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Upload artifact
+      - name: Upload HTML
         uses: actions/upload-pages-artifact@v2
         with:
-          # Upload entire repository
-          path: '.'
+          path: 'index.html'
+      - name: Upload Data
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: 'top100.csv'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
