@@ -19,5 +19,4 @@ ua_df = pd.DataFrame(
     ]
 ).sort_values(by="size", ascending=False)
 
-ua_df.head(10)[["label", "size"]].to_csv("top10.csv", index=False)
 ua_df.head(100)[["label", "size"]].to_csv("top100.csv", index=False)
