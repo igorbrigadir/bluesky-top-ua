@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UA Top 100</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+<body>
+    <h1>UA Top 100</h1>
+    <div id="output"></div>
+    <script>
+    fetch('top100.csv')
+    .then(response => response.text())
+    .then(data => {
+        let parsedData = Papa.parse(data, {header: true}).data;
+        let outputDiv = document.getElementById('output');
+        let rowNum = 1;
+        for(let row of parsedData){
+            let url = "https://bsky.app/" + row.label;
+            let link = document.createElement('a');
+            link.href = url;
+            link.innerText = url;
+            let rowElement = document.createElement('p');
+            rowElement.innerText = "№ " + rowNum + ": ";
+            rowElement.appendChild(link);
+            outputDiv.appendChild(rowElement);
+            rowNum++;
+        }
+    });
+    </script>
+</body>
+</html>
