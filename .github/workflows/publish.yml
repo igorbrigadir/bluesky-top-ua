@@ -35,14 +35,11 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Upload HTML
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: 'index.html'
-      - name: Upload Data
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: 'top100.csv'
+          # Upload entire repository
+          path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
