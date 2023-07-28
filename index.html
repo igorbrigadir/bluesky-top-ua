@@ -15,15 +15,18 @@
         let outputDiv = document.getElementById('output');
         let rowNum = 1;
         for(let row of parsedData){
-            let url = "https://bsky.app/" + row.label;
-            let link = document.createElement('a');
-            link.href = url;
-            link.innerText = url;
-            let rowElement = document.createElement('p');
-            rowElement.innerText = "№ " + rowNum + ": ";
-            rowElement.appendChild(link);
-            outputDiv.appendChild(rowElement);
-            rowNum++;
+            // Check that the label field is not empty
+            if(row.label){
+                let url = "https://bsky.app/profile/" + row.label;
+                let link = document.createElement('a');
+                link.href = url;
+                link.innerText = url;
+                let rowElement = document.createElement('p');
+                rowElement.innerText = "Row " + rowNum + ": ";
+                rowElement.appendChild(link);
+                outputDiv.appendChild(rowElement);
+                rowNum++;
+            }
         }
     });
     </script>
